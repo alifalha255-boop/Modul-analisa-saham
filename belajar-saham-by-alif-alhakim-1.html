@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="Belajar Analisa Saham dari nol bersama Alif Alhakim. Fundamental, teknikal, valuasi, screener, risiko, dan strategi investasi.">
+<title>Belajar Analisa Saham — by Alif Alhakim</title>
+<style>
+:root{
+  --bg:#07111f;--bg2:#0b1728;--card:#0f2035;--card2:#122842;
+  --text:#edf5ff;--muted:#9fb2c8;--blue:#25a7ff;--cyan:#5ee7ff;
+  --green:#32d583;--red:#ff6875;--yellow:#ffd166;--line:#1e3854;
+  --shadow:0 18px 50px rgba(0,0,0,.28);--radius:20px;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#06101d 0%,#091626 45%,#07111f 100%);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(6,16,29,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(94,231,255,.12)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:900;letter-spacing:.2px}.logo span{color:var(--cyan)}
+nav{display:flex;gap:18px;align-items:center}
+nav a{font-size:14px;color:var(--muted)}nav a:hover{color:white}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:10px;padding:8px 11px}
+.hero{padding:80px 0 60px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:480px;height:480px;background:rgba(37,167,255,.14);filter:blur(100px);border-radius:50%;right:-120px;top:-160px}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(94,231,255,.25);background:rgba(37,167,255,.08);color:var(--cyan);padding:7px 12px;border-radius:999px;font-size:13px;font-weight:700}
+h1{font-size:clamp(38px,7vw,76px);line-height:1.02;max-width:900px;margin:22px 0 18px;letter-spacing:-2.5px}
+.gradient{background:linear-gradient(90deg,#fff,#5ee7ff,#25a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:18px;color:var(--muted);max-width:760px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;font-weight:800;border:1px solid var(--line);background:var(--card);cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,#1599ef,#2563eb);border-color:transparent;box-shadow:0 10px 30px rgba(37,167,255,.2)}
+section{padding:62px 0}
+.section-title{font-size:32px;margin:0 0 8px}.section-sub{color:var(--muted);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(145deg,rgba(18,40,66,.96),rgba(10,25,42,.96));border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card h3{margin:8px 0}.card p{color:var(--muted);margin-bottom:0}
+.icon{font-size:28px}
+.pill{display:inline-block;font-size:11px;color:var(--cyan);background:rgba(94,231,255,.08);padding:4px 8px;border-radius:999px;border:1px solid rgba(94,231,255,.15)}
+.lesson{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start}
+.sidebar{position:sticky;top:92px}
+.side-btn{width:100%;text-align:left;border:1px solid var(--line);background:var(--card);color:var(--muted);padding:12px;border-radius:10px;margin-bottom:8px;cursor:pointer}
+.side-btn.active,.side-btn:hover{color:white;border-color:var(--blue);background:rgba(37,167,255,.1)}
+.lesson-panel{display:none}.lesson-panel.active{display:block}
+.tip{border-left:4px solid var(--cyan);padding:14px 16px;background:rgba(94,231,255,.06);border-radius:0 12px 12px 0;margin:18px 0}
+.warning{border-left-color:var(--yellow);background:rgba(255,209,102,.06)}
+table{width:100%;border-collapse:collapse;margin:16px 0;background:rgba(0,0,0,.12);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}th{color:var(--cyan);font-size:13px}td{color:#d9e6f3}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#06101c;border:1px solid var(--line);padding:14px;border-radius:12px;color:#bfeaff;overflow:auto}
+.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.check{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:12px}
+input[type=checkbox]{accent-color:var(--blue);margin-right:8px}
+.quiz{margin-top:18px}.q{padding:18px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:var(--card)}
+.q label{display:block;padding:8px;color:var(--muted);cursor:pointer}
+.result{margin-top:16px;padding:16px;border-radius:14px;background:rgba(50,213,131,.08);border:1px solid rgba(50,213,131,.25);display:none}
+.search{width:100%;padding:14px 16px;border-radius:12px;background:#081522;border:1px solid var(--line);color:white;outline:none;margin-bottom:18px}
+.case{border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(145deg,#102741,#0b192b)}
+footer{border-top:1px solid var(--line);padding:35px 0;color:var(--muted);margin-top:40px}
+.small{font-size:13px;color:var(--muted)}
+@media(max-width:800px){
+ nav{display:none;position:absolute;left:4%;right:4%;top:62px;background:#081522;border:1px solid var(--line);padding:12px;border-radius:14px;flex-direction:column;align-items:stretch}
+ nav.open{display:flex}.menu{display:block}
+ .grid{grid-template-columns:1fr}.lesson{grid-template-columns:1fr}.sidebar{position:static}
+ .checklist{grid-template-columns:1fr}.hero{padding-top:55px}h1{letter-spacing:-1.5px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">BELAJAR SAHAM <span>×</span> ALIF ALHAKIM</a>
+    <button class="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <a href="#materi">Materi</a><a href="#fundamental">Fundamental</a><a href="#teknikal">Teknikal</a>
+      <a href="#valuasi">Valuasi</a><a href="#risiko">Risiko</a><a href="#quiz">Quiz</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="container">
+  <span class="badge">📈 ACADEMY SAHAM — LEVEL 0 → MAHIR</span>
+  <h1>Belajar Analisa Saham <span class="gradient">dari Nol</span></h1>
+  <p>Panduan praktis untuk memahami bisnis, laporan keuangan, valuasi, grafik harga, manajemen risiko, dan cara menyusun keputusan investasi dengan logis.</p>
+  <div class="buttons"><a class="btn primary" href="#materi">Mulai Belajar →</a><a class="btn" href="#roadmap">Lihat Roadmap</a></div>
+</div>
+</section>
+
+<section id="roadmap">
+<div class="container">
+<h2 class="section-title">Roadmap Belajar</h2><p class="section-sub">Ikuti urutan ini agar tidak bingung saat mulai.</p>
+<div class="grid">
+  <div class="card"><span class="pill">01 — DASAR</span><h3>Kenali Saham</h3><p>Pahami saham, IHSG, lot, bid-offer, capital gain, dividen, dan cara kerja pasar.</p></div>
+  <div class="card"><span class="pill">02 — FUNDAMENTAL</span><h3>Nilai Bisnis</h3><p>Pelajari pendapatan, laba, arus kas, ROE, margin, utang, pertumbuhan, dan kualitas bisnis.</p></div>
+  <div class="card"><span class="pill">03 — TEKNIKAL</span><h3>Baca Harga</h3><p>Gunakan tren, support-resistance, volume, MA, RSI, MACD, dan pola breakout.</p></div>
+  <div class="card"><span class="pill">04 — VALUASI</span><h3>Harga Wajar</h3><p>Bandingkan harga pasar dengan nilai bisnis menggunakan PER, PBV, DCF sederhana, dan margin of safety.</p></div>
+  <div class="card"><span class="pill">05 — RISIKO</span><h3>Lindungi Modal</h3><p>Atur ukuran posisi, diversifikasi, risk/reward, dan batas kerugian sebelum membeli.</p></div>
+  <div class="card"><span class="pill">06 — STRATEGI</span><h3>Buat Sistem</h3><p>Bangun watchlist, screener, jurnal investasi, checklist, dan aturan entry-exit.</p></div>
+</div>
+</div>
+</section>
+
+<section id="materi">
+<div class="container">
+<h2 class="section-title">Materi Inti</h2><p class="section-sub">Pilih bab yang ingin dipelajari.</p>
+<div class="lesson">
+<aside class="sidebar">
+<button class="side-btn active" onclick="showLesson('dasar',this)">📚 1. Dasar Saham</button>
+<button class="side-btn" onclick="showLesson('fundamental',this)">🏢 2. Fundamental</button>
+<button class="side-btn" onclick="showLesson('teknikal',this)">📊 3. Teknikal</button>
+<button class="side-btn" onclick="showLesson('valuasi',this)">💰 4. Valuasi</button>
+<button class="side-btn" onclick="showLesson('risiko',this)">🛡️ 5. Manajemen Risiko</button>
+<button class="side-btn" onclick="showLesson('screener',this)">🔎 6. Screener</button>
+</aside>
+
+<div>
+<article id="dasar" class="lesson-panel active card">
+<h2>📚 Dasar Saham</h2>
+<p>Saham adalah bukti kepemilikan atas suatu perusahaan. Ketika membeli saham, kita membeli sebagian kecil bisnis tersebut.</p>
+<h3>Istilah penting</h3>
+<table><tr><th>Istilah</th><th>Arti sederhana</th></tr>
+<tr><td>Lot</td><td>Di BEI, 1 lot = 100 lembar saham.</td></tr>
+<tr><td>Capital Gain</td><td>Keuntungan dari kenaikan harga saham.</td></tr>
+<tr><td>Dividen</td><td>Bagian laba perusahaan yang dibagikan kepada pemegang saham.</td></tr>
+<tr><td>Bid / Offer</td><td>Harga permintaan beli / penawaran jual.</td></tr>
+<tr><td>IHSG</td><td>Indeks yang menggambarkan pergerakan pasar saham Indonesia secara umum.</td></tr>
+</table>
+<div class="tip"><b>Prinsip pertama:</b> jangan membeli saham hanya karena harganya sedang naik. Tanyakan: <b>“Saya sebenarnya sedang membeli bisnis apa?”</b></div>
+</article>
+
+<article id="fundamental" class="lesson-panel card">
+<h2>🏢 Analisa Fundamental</h2>
+<p>Analisa fundamental mencoba menilai <b>kualitas dan nilai ekonomi bisnis</b>. Fokus utamanya bukan sekadar grafik harga.</p>
+<h3>1. Pendapatan & laba</h3><p>Periksa apakah revenue dan laba tumbuh secara sehat. Pertumbuhan yang konsisten biasanya lebih menarik daripada lonjakan satu kali.</p>
+<h3>2. Margin</h3><p>Margin menunjukkan seberapa efisien perusahaan menghasilkan laba dari penjualan.</p>
+<div class="formula">Net Profit Margin = Laba Bersih ÷ Pendapatan × 100%</div>
+<h3>3. ROE</h3><p>ROE mengukur kemampuan perusahaan menghasilkan laba dari modal pemegang saham.</p>
+<div class="formula">ROE = Laba Bersih ÷ Ekuitas × 100%</div>
+<h3>4. Utang</h3><p>Utang tidak otomatis buruk. Yang penting adalah kemampuan perusahaan membayar kewajibannya dan apakah utang digunakan secara produktif.</p>
+<h3>5. Arus kas</h3><p>Bandingkan laba dengan arus kas operasi. Laba yang bagus tetapi tidak didukung kas perlu diteliti lebih dalam.</p>
+<div class="tip"><b>Checklist fundamental:</b> bisnisnya bagus? revenue tumbuh? laba sehat? margin stabil? ROE menarik? utang terkendali? arus kas sehat? valuasinya masuk akal?</div>
+</article>
+
+<article id="teknikal" class="lesson-panel card">
+<h2>📊 Analisa Teknikal</h2>
+<p>Analisa teknikal mempelajari pergerakan harga dan volume untuk membantu menentukan timing.</p>
+<h3>Support & Resistance</h3><p><b>Support</b> adalah area harga yang sering menjadi tempat munculnya permintaan. <b>Resistance</b> adalah area yang sering menjadi tempat tekanan jual.</p>
+<h3>Trend</h3><p>Uptrend umumnya ditandai higher high dan higher low. Downtrend ditandai lower high dan lower low.</p>
+<h3>Moving Average</h3><p>MA membantu menghaluskan harga dan melihat arah tren. Contoh: MA20, MA50, dan MA200.</p>
+<h3>RSI</h3><p>RSI dapat membantu membaca momentum. Jangan gunakan angka overbought/oversold sebagai sinyal tunggal.</p>
+<h3>Volume & Breakout</h3><p>Breakout yang disertai volume kuat biasanya lebih meyakinkan daripada breakout dengan volume tipis.</p>
+<div class="tip warning"><b>Ingat:</b> indikator teknikal adalah alat bantu, bukan mesin prediksi pasti.</div>
+</article>
+
+<article id="valuasi" class="lesson-panel card">
+<h2>💰 Valuasi Saham</h2>
+<p>Valuasi membantu menjawab pertanyaan: <b>“Harga saham ini murah, wajar, atau mahal dibandingkan nilai bisnisnya?”</b></p>
+<h3>PER</h3><div class="formula">PER = Harga Saham ÷ EPS</div>
+<p>PER rendah belum tentu murah. Bandingkan dengan pertumbuhan laba, kualitas bisnis, dan perusahaan sejenis.</p>
+<h3>PBV</h3><div class="formula">PBV = Harga Saham ÷ Book Value per Share</div>
+<p>PBV sering berguna untuk bisnis yang aset dan ekuitasnya relevan, termasuk banyak sektor keuangan.</p>
+<h3>Dividend Yield</h3><div class="formula">Dividend Yield = Dividen per Saham ÷ Harga Saham × 100%</div>
+<h3>Margin of Safety</h3><p>Jika estimasi nilai wajar Rp1.000 dan investor hanya mau membeli dengan margin of safety 20%, harga batasnya sekitar:</p>
+<div class="formula">Rp1.000 × (1 − 20%) = Rp800</div>
+<div class="tip">Nilai wajar adalah <b>estimasi</b>, bukan angka pasti. Gunakan beberapa metode dan skenario.</div>
+</article>
+
+<article id="risiko" class="lesson-panel card">
+<h2>🛡️ Manajemen Risiko</h2>
+<p>Analisa yang bagus tetap bisa salah. Karena itu, investor harus mengatur risiko sebelum transaksi.</p>
+<h3>Position sizing</h3><p>Jangan mempertaruhkan terlalu banyak modal pada satu ide. Tentukan ukuran posisi berdasarkan toleransi risiko.</p>
+<h3>Risk / Reward</h3><div class="formula">Risk/Reward = Potensi Rugi ÷ Potensi Untung</div>
+<p>Contoh: risiko Rp100 untuk peluang Rp300 berarti risk/reward 1:3.</p>
+<h3>Diversifikasi</h3><p>Jangan membuat seluruh portofolio bergantung pada satu perusahaan, sektor, atau satu tesis.</p>
+<div class="tip warning"><b>Aturan emas:</b> jangan menggunakan uang untuk kebutuhan hidup dalam investasi berisiko tinggi.</div>
+</article>
+
+<article id="screener" class="lesson-panel card">
+<h2>🔎 Membuat Stock Screener</h2>
+<p>Screener digunakan untuk menyaring ratusan saham menjadi daftar kandidat yang lebih kecil.</p>
+<h3>Contoh filter awal</h3>
+<div class="checklist">
+<div class="check">☑ ROE sehat</div><div class="check">☑ Revenue growth positif</div>
+<div class="check">☑ Laba bersih positif</div><div class="check">☑ Utang terkendali</div>
+<div class="check">☑ Arus kas operasi sehat</div><div class="check">☑ Valuasi masuk akal</div>
+<div class="check">☑ Likuiditas memadai</div><div class="check">☑ Tidak hanya mengandalkan hype</div>
+</div>
+<div class="tip">Screener adalah <b>filter awal</b>, bukan alasan otomatis untuk membeli. Setelah lolos screening, baca bisnis dan laporan keuangannya.</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+
+<section id="studi-kasus">
+<div class="container">
+<h2 class="section-title">Studi Kasus Sederhana</h2><p class="section-sub">Contoh angka fiktif untuk belajar — bukan rekomendasi saham.</p>
+<div class="case">
+<h3>PT Contoh Tbk — Simulasi</h3>
+<table><tr><th>Data</th><th>Nilai</th></tr>
+<tr><td>Harga saham</td><td>Rp1.200</td></tr><tr><td>EPS</td><td>Rp100</td></tr>
+<tr><td>Book Value / Share</td><td>Rp800</td></tr><tr><td>Dividen / Share</td><td>Rp50</td></tr>
+<tr><td>ROE</td><td>15%</td></tr></table>
+<p><b>PER:</b> 1.200 ÷ 100 = <b>12x</b></p>
+<p><b>PBV:</b> 1.200 ÷ 800 = <b>1,5x</b></p>
+<p><b>Dividend Yield:</b> 50 ÷ 1.200 × 100% = <b>4,17%</b></p>
+<p>Kesimpulan latihan: angka-angka ini belum cukup untuk memutuskan beli. Kita masih perlu melihat pertumbuhan, kualitas bisnis, arus kas, utang, prospek industri, manajemen, dan valuasi relatif.</p>
+</div>
+</div>
+</section>
+
+<section id="quiz">
+<div class="container">
+<h2 class="section-title">🧠 Quiz</h2><p class="section-sub">Uji pemahaman setelah belajar.</p>
+<div class="quiz">
+<div class="q"><b>1. Apa yang diukur ROE?</b>
+<label><input type="radio" name="q1" value="1"> Kemampuan menghasilkan laba dari ekuitas</label>
+<label><input type="radio" name="q1" value="0"> Jumlah lot saham</label>
+<label><input type="radio" name="q1" value="0"> Volume transaksi saja</label></div>
+<div class="q"><b>2. Jika harga Rp1.000 dan EPS Rp100, berapa PER?</b>
+<label><input type="radio" name="q2" value="0"> 5x</label><label><input type="radio" name="q2" value="1"> 10x</label><label><input type="radio" name="q2" value="0"> 100x</label></div>
+<div class="q"><b>3. Apa fungsi utama support?</b>
+<label><input type="radio" name="q3" value="1"> Area yang sering menjadi tempat munculnya permintaan</label>
+<label><input type="radio" name="q3" value="0"> Jaminan harga tidak turun</label>
+<label><input type="radio" name="q3" value="0"> Nilai laba perusahaan</label></div>
+<div class="q"><b>4. Apakah PER rendah otomatis berarti saham murah?</b>
+<label><input type="radio" name="q4" value="0"> Ya, selalu</label>
+<label><input type="radio" name="q4" value="1"> Tidak, perlu melihat konteks bisnis dan pertumbuhan</label></div>
+<button class="btn primary" onclick="checkQuiz()">Periksa Jawaban</button>
+<div id="result" class="result"></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container card">
+<h2>📌 Checklist Sebelum Membeli Saham</h2>
+<div class="checklist">
+<label class="check"><input type="checkbox"> Saya memahami bisnis perusahaan.</label>
+<label class="check"><input type="checkbox"> Saya sudah membaca laporan keuangan.</label>
+<label class="check"><input type="checkbox"> Saya memahami alasan membeli.</label>
+<label class="check"><input type="checkbox"> Saya sudah mempertimbangkan valuasi.</label>
+<label class="check"><input type="checkbox"> Saya sudah menentukan risiko.</label>
+<label class="check"><input type="checkbox"> Saya tidak membeli hanya karena FOMO.</label>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<b>Belajar Analisa Saham — by Alif Alhakim</b>
+<p class="small">Materi edukasi, bukan rekomendasi untuk membeli atau menjual saham. Data dan contoh di website ini bersifat edukatif. Selalu lakukan riset sendiri sebelum mengambil keputusan investasi.</p>
+<p class="small">© 2026 Alif Alhakim. Dibuat untuk belajar.</p>
+</div>
+</footer>
+
+<script>
+function showLesson(id,btn){
+ document.querySelectorAll('.lesson-panel').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.side-btn').forEach(x=>x.classList.remove('active'));
+ btn.classList.add('active');
+ document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+}
+function checkQuiz(){
+ let score=0,total=4;
+ for(let i=1;i<=total;i++){
+  const a=document.querySelector('input[name="q'+i+'"]:checked');
+  if(a) score+=Number(a.value);
+ }
+ const r=document.getElementById('result');
+ r.style.display='block';
+ let msg=score===4?'🏆 Sempurna! Kamu sudah memahami dasar-dasarnya.':score>=3?'🔥 Bagus! Tinggal perdalam beberapa bagian.':score>=2?'👍 Lumayan. Ulangi materi yang masih belum dikuasai.':'📚 Yuk pelajari lagi materi dasar sebelum lanjut.';
+ r.innerHTML='<b>Skor kamu: '+score+'/'+total+'</b><br>'+msg;
+}
+</script>
+</body>
+</html>
